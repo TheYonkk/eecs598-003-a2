@@ -11,6 +11,8 @@ import questionData from "../data/v2_OpenEnded_mscoco_val2014_questions.json";
 import { database } from "../firebase/firebase";
 import { ref, set, push } from "firebase/database";
 import { useRouter } from "next/router";
+import Accordion from "../components/accordion";
+import { example1, example2, example3 } from "../components/Examples/examples";
 
 export default function Task() {
   const IMAGE_URL_BASE =
@@ -63,7 +65,14 @@ export default function Task() {
     }); // actually maps the key to some data
 
     // handle accept (nav to new page with database insert key) or reject
-    responsePromise.then(()=>{router.push(`/thanks/${newResponseRef.key}`)}).catch(()=>{console.log("There was an error submitting!"); setSubmitEnabled(true);});
+    responsePromise
+      .then(() => {
+        router.push(`/thanks/${newResponseRef.key}`);
+      })
+      .catch(() => {
+        console.log("There was an error submitting!");
+        setSubmitEnabled(true);
+      });
   };
 
   const imageLoader = ({ src, width, quality }) => {
@@ -81,8 +90,19 @@ export default function Task() {
       </Head>
       <section>
         <h2 className={utilStyles.heading2Xl}>Instructions</h2>
-        <p>The instructions will be placed here.</p>
-        <p>Ready?</p>
+        <p>
+          You will be asked one question regarding an image shown to you. The
+          question will be open-ended and potentially subjective. It is your
+          task to answer the question as succincly and accurately as possible
+          (in one, or maybe two words).
+        </p>
+        <p>
+          If this if your first HIT from Dave, please expand the examples below
+          to get an idea of good and bad answers:
+        </p>
+        <Accordion title="Example #1">{example1}</Accordion>
+        <Accordion title="Example #2">{example2}</Accordion>
+        <Accordion title="Example #3">{example3}</Accordion>
       </section>
 
       {isTaskLoaded && imageID ? (
