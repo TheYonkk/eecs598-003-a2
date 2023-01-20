@@ -11,8 +11,8 @@ import questionData from "../data/v2_OpenEnded_mscoco_val2014_questions.json";
 import { database } from "../firebase/firebase";
 import { ref, set, push } from "firebase/database";
 import { useRouter } from "next/router";
-import Accordion from "../components/accordion";
 import { example1, example2, example3 } from "../components/Examples/examples";
+import Accordion from "../components/accordion";
 
 export default function Task() {
   const IMAGE_URL_BASE =
