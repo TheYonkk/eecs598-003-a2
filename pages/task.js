@@ -12,7 +12,7 @@ import { database } from "../firebase/firebase";
 import { ref, set, push } from "firebase/database";
 import { useRouter } from "next/router";
 import { example1, example2, example3 } from "../components/Examples/examples";
-import Accordion from "../components/accordion";
+import Accordion from "../components/Accordion";
 
 export default function Task() {
   const IMAGE_URL_BASE =
