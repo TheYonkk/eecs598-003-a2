@@ -62,6 +62,7 @@ export default function Task() {
         file: imageIDs[imageID],
         link: `${IMAGE_URL_BASE}${imageIDs[imageID]}`,
       },
+      reviewed: false,
     }); // actually maps the key to some data
 
     // handle accept (nav to new page with database insert key) or reject
