@@ -15,7 +15,7 @@ import { example1, example2, example3 } from "../components/Examples/examples";
 import Accordion from "../components/Accordion";
 import IndividualTask from "../components/IndividualTask";
 
-const NUM_IMAGES = 20;
+const NUM_IMAGES = 25;
 
 export default function Task() {
   const IMAGE_URL_BASE =
