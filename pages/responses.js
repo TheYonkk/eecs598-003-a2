@@ -38,11 +38,12 @@ export default function Responses() {
         </p>
       </section>
       <section>
-        {responses.length > 0 ? (
+        {/* {responses.length > 0 ? (
           responses.map(({ id, data }) => <Response id={id} data={data} />)
         ) : (
           <p>There are currently no unreviewed responses</p>
-        )}
+        )} */}
+        <p>The responses section is currently broken :) maybe dave will fix it later</p>
       </section>
     </Layout>
   );

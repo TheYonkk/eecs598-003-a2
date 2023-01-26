@@ -5,7 +5,6 @@ import Image from "next/image";
 import { database } from "../firebase/firebase";
 import { ref, set } from "firebase/database";
 import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
 
 export default function Response({ id, data }) {
 
@@ -24,7 +23,6 @@ export default function Response({ id, data }) {
       <div className={styles.responseBody}>
         <div className={styles.responseContent}>
           <h3 className={styles.responseTitle}>Response <span id={id} data-tooltip-content="click to copy to clipboard" onClick={copyToClipboard}>{id}</span></h3>
-          <Tooltip place="top" type="dark" effect="solid" anchorId={id}/>
           <p className={styles.responseQuestion}>Q: {data.question.question}</p>
           <p className={styles.responseAnswer}>A: {data.answer}</p>
           <button className={styles.buttonBlue} onClick={markAsReviewed}>
