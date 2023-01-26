@@ -22,9 +22,6 @@ export default function Task() {
     "https://eecs583-yonkers-a2.s3.us-east-2.amazonaws.com/val2014/";
   const router = useRouter();
   const [isTaskLoaded, setIsTaskLoaded] = useState(false);
-  const [imageID, setImageID] = useState();
-  const [selectedQuestion, setSelectedQuestion] = useState();
-  const [answer, setAnswer] = useState("");
   const [submitEnabled, setSubmitEnabled] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -66,24 +63,8 @@ export default function Task() {
 
     setTasks(qData);
 
-    setImageID(ids[Math.floor(Math.random() * ids.length)]);
   }, []);
 
-  // determine the question whenever the selected image changes
-  useEffect(() => {
-    // get all of the potential questions for this id
-    var questions = [];
-    questionData["questions"].forEach((question) => {
-      if (question["image_id"] == imageID) {
-        questions = [...questions, question];
-      }
-    });
-
-    // randomly select a question
-    setSelectedQuestion(
-      questions[Math.floor(Math.random() * questions.length)]
-    );
-  }, [imageID]);
 
   const saveToDb = ({ data }) => {
     setSubmitEnabled(false); // disable submitting a second time
@@ -95,7 +76,13 @@ export default function Task() {
     for (let i = 0; i < tasks.length; i++) {
       responses.push({
         question: tasks[i].question,
-        answer: answers[i] ? answers[i] : "",
+        answer: answers[i]
+          ? answers[i]
+          : {
+              answer: "",
+              questionDoesNotApply: false,
+              cannotAnswer: false,
+            },
         image: tasks[i].image,
       });
     }
