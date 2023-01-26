@@ -36,12 +36,12 @@ export default function Task({
         onChange={(e) => handleEnterAnswer(number, "answer", e.target.value)}
       />
       <div className={styles.checkBox}>
-        <input type="checkbox" id="na" name="na" onChange={(e) => handleEnterAnswer(number, "questionDoesNotApply", e.target.checked)}/>
-        <label for="na">Question does not apply.</label>
+        <input type="checkbox" id={"na" + number} name={"na" + number} onChange={(e) => handleEnterAnswer(number, "questionDoesNotApply", e.target.checked)}/>
+        <label for={"na" + number}>Question does not apply.</label>
       </div>
       <div className={styles.checkBox}>
-        <input type="checkbox" id="noAns" name="noAns" onChange={(e) => handleEnterAnswer(number, "cannotAnswer", e.target.checked)}/>
-        <label for="noAns">I cannot answer this quesiton.</label>
+        <input type="checkbox" id={"noAns" + number} name={"noAns" + number} onChange={(e) => handleEnterAnswer(number, "cannotAnswer", e.target.checked)}/>
+        <label for={"noAns" + number}>I cannot answer this question.</label>
       </div>
     </div>
   );
