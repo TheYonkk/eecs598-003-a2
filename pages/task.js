@@ -15,7 +15,8 @@ import { example1, example2, example3 } from "../components/Examples/examples";
 import Accordion from "../components/Accordion";
 import IndividualTask from "../components/IndividualTask";
 
-const NUM_IMAGES = 25;
+const NUM_IMAGES = 10;
+
 
 export default function Task() {
   const IMAGE_URL_BASE =
@@ -68,7 +69,7 @@ export default function Task() {
 
   const saveToDb = ({ data }) => {
     setSubmitEnabled(false); // disable submitting a second time
-    const responsesRef = ref(database, "responses"); // gets the /responses part of the db
+    const responsesRef = ref(database, "responses_a3"); // gets the /responses part of the db
     const newResponseRef = push(responsesRef); // creates a unique key and returns it as a reference
 
     // merge the question and answer into a single object, then append it to the list of responses
@@ -126,7 +127,6 @@ export default function Task() {
         newAnswers[taskNumber - 1].cannotAnswer = text;
         break;
     }
-
     setAnswers(newAnswers);
   };
 
