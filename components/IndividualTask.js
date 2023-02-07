@@ -7,7 +7,7 @@ const imageLoader = ({ src, width, quality }) => {
   return `${src}`;
 };
 
-const API_ENDPOINT = "https://daveyonkers.com/ask";
+const API_ENDPOINT = "https://api.daveyonkers.com/ask";
 const SCORE_THRESHOLD = 0.01; // only display suggestions with a score above this threshold
 
 export default function Task({
