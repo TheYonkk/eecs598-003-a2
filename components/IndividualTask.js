@@ -28,7 +28,7 @@ export default function Task({
     };
 
     const fetchSuggestions = async () => {
-      console.log("fetching suggestions");
+
       fetch(API_ENDPOINT, {
         method: "POST",
         headers: {

@@ -36,3 +36,6 @@ def ask():
     # run the pipeline and return the answers
     ans = vqa_pipeline(image_link, question)
     return jsonify(ans)
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
