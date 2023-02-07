@@ -10,6 +10,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 vqa_pipeline = pipeline("visual-question-answering")
 
 @app.route("/")
+@cross_origin()
 def index():
     return "<p>Send some data to the /ask endpoint via a post request!</p>"
 
@@ -17,10 +18,6 @@ def index():
 @app.route("/ask", methods=["POST"])
 @cross_origin()
 def ask():
-
-    # only allow POST requests
-    if request.method != "POST":
-        return "Only POST requests are allowed", 400
 
     # get the data from the request
     data = request.get_json()
@@ -38,4 +35,4 @@ def ask():
     return jsonify(ans)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000, ssl_context='adhoc')
